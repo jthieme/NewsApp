@@ -16,7 +16,7 @@ fun NewsApp() {
 fun Navigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "Top News") {
+    NavHost(navController = navController, startDestination = "TopNews") {
         composable("TopNews") {
             TopNews(navController = navController)
         }

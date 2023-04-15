@@ -1,7 +1,7 @@
 package com.thieme.newsapp.ui.screen
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun DetailScreen(navController : NavController) {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Detail Screen", fontWeight = FontWeight.SemiBold)
         Button(onClick = { navController.navigate("TopNews") }) {
             Text(text = "Go to Top News Screen")
