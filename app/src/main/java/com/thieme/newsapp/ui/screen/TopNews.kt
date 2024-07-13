@@ -1,6 +1,7 @@
 package com.thieme.newsapp.ui.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,22 +30,23 @@ import com.thieme.newsapp.NewsData
 fun TopNews(navController: NavController) {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Top News", fontWeight = FontWeight.SemiBold)
-//        Button(onClick = { navController.navigate("DetailScreen") }) {
-//            Text(text = "Go to Detail Screen")
-//        }
         LazyColumn {
             items(MockData.topNewsList) {
-                newsData -> TopNewsItem(newsData = newsData)
+                newsData -> TopNewsItem(newsData = newsData, onNewsClick = {
+                    navController.navigate("DetailScreen/${newsData.id}")
+            })
             }
         }
     }
 }
 
 @Composable
-fun TopNewsItem(newsData: NewsData) {
+fun TopNewsItem(newsData: NewsData, onNewsClick: () -> Unit = {}) {
     Box(modifier = Modifier
         .height(200.dp)
-        .padding(8.dp)) {
+        .padding(8.dp).clickable {
+            onNewsClick()
+        }) {
         Image(painter = painterResource(id = newsData.image), contentDescription = "", contentScale = ContentScale.FillBounds)
         Column(modifier = Modifier
             .wrapContentHeight()
