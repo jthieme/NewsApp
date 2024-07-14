@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.thieme.newsapp.MockData
+import com.thieme.newsapp.MockData.getTimeAgo
 import com.thieme.newsapp.NewsData
 
 @Composable
@@ -52,7 +53,7 @@ fun TopNewsItem(newsData: NewsData, onNewsClick: () -> Unit = {}) {
             .wrapContentHeight()
             .padding(top = 16.dp, start = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween) {
-            Text(text = newsData.publishedAt,
+            Text(text = MockData.stringToDate(newsData.publishedAt).getTimeAgo(),
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(80.dp))

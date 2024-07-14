@@ -32,6 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.thieme.newsapp.MockData
+import com.thieme.newsapp.MockData.getTimeAgo
 import com.thieme.newsapp.NewsData
 import com.thieme.newsapp.R
 
@@ -50,7 +52,7 @@ fun DetailScreen(newsData: NewsData, scrollState: ScrollState, navController: Na
                 .fillMaxWidth()
                 .padding(8.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                 InfoWithIcon(icon = Icons.Default.Edit, info = newsData.author)
-                InfoWithIcon(icon = Icons.Default.DateRange, info = newsData.publishedAt)
+                InfoWithIcon(icon = Icons.Default.DateRange, info = MockData.stringToDate(newsData.publishedAt).getTimeAgo())
             }
             Text(text = newsData.title, fontWeight = FontWeight.Bold)
             Text(text = newsData.description, modifier = Modifier.padding(top = 16.dp))
